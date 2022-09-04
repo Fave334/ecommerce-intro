@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | E-commerce product page</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="jquery-3.1.1.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/all.css">
+  <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/all.min.css">
+  <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/fontawesome.css">
+  <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/fontawesome.min.css">
+  <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/regular.css">
+  <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/regular.min.css">
+  <link rel="stylesheet" href="Kumbh_Sans/KumbhSans-VariableFont_wght.ttf">
+  <script>
+    $(function () {
+      $(".cart-img").click(function () {
+        $(".cart").slideToggle(500);
+      });
+      $("#open").click(function () {
+        $(".main-nav").animate({
+          width: "200px",
+        });
+        $(".main-nav").fadeIn(300);
+        $("#cover").css({
+          "display": "block",
+        });
+      });
+      $("#close").click(function () {
+        $(".main-nav").animate({
+          width: "200px",
+        });
+        $("#cover").css({
+          "display": "none",
+        });
+        $(".main-nav").fadeOut(300);
+      });
+      var sources = [
+        "images/image-product-1.jpg",
+        "images/image-product-2.jpg",
+        "images/image-product-3.jpg",
+        "images/image-product-4.jpg"
+      ];
+      let img = $("#img");
+      var num = 3;
+      var num1 = 0;
+      $(".thumb1").click(function () {
+        img.fadeOut(200);
+        img.fadeIn(200);
+        img.attr("src", sources[0]);
+      });
+      $(".thumb2").click(function () {
+        img.fadeOut(200);
+        img.fadeIn(200);
+        img.attr("src", sources[1]);
+      });
+      $(".thumb3").click(function () {
+        img.fadeOut(200);
+        img.fadeIn(200);
+        img.attr("src", sources[2]);
+      });
+      $(".thumb4").click(function () {
+        img.fadeOut(200);
+        img.fadeIn(200);
+        img.attr("src", sources[3]);
+      });
+      $(".prev").click(function () {
+        num -= 1;
+        if (num < 0) {
+          num = 3;
+        }
+        img.fadeOut(200);
+        img.fadeIn(200);
+        img.attr("src", sources[num]);
+      });
+      $(".next").click(function () {
+        num1 += 1;
+        if (num1 > 3) {
+          num1 = 0;
+        }
+        img.fadeOut(200);
+        img.fadeIn(200);
+        img.attr("src", sources[num1]);
+      });
+      $(".close-box").click(function () {
+        $(".lightbox").fadeOut(300);
+        $("#cover").fadeOut(300);
+      });
+      $(".main-product-img, .img-thumbnail").click(function () {
+        $(".lightbox").fadeIn(300);
+        $(".lightbox").css({
+          "display": "flex",
+        });
+        $("#cover").fadeIn(300);
+      });
+      var price = 125,
+        multNum = 1,
+        mult = $(".no-affected");
+      $(".increment").click(function () {
+        if (multNum < 10) {
+          multNum += 1;
+          mult.text(multNum);
+          $(".notification").text(multNum);
+          $("#increase").text(multNum);
+          $("#result").text("$" + price * multNum);
+          return true;
+        }
+        alert("Maximum order limit");
+      });
+      $(".decrement").click(function () {
+        if (multNum > 0) {
+          multNum -= 1;
+          $(".notification").text(multNum);
+          mult.text(multNum);
+          $("#increase").text(multNum);
+          $("#result").text("$" + price * multNum);
+        }
+      });
+      $(".btn-cart").click(function () {
+        $(".cart-contents").fadeOut();
+        $(".cartAppended").fadeIn(300);
+        $(".cartAppended").css({
+          "display": "flex",
+        });
+        $(".notification").fadeIn(500);
+      });
+      $(".delete").click(function () {
+        $(".cart-contents").fadeIn(300);
+        $(".cartAppended").fadeOut();
+        $(".notification").fadeOut(500);
+        $(".cartAppended").css({
+          "display": "none",
+        });
+      });
+      $(".spec-left-btn").click(function () {
+        num -= 1;
+        if (num < 0) {
+          num = 3;
+        }
+        $(".product-container").fadeOut(200);
+        $(".product-container").fadeIn(200);
+        $(".product-container").css({
+          "background": "url(" + sources[num] + ")",
+        });
+      });
+      $(".spec-right-btn").click(function () {
+        num1 += 1;
+        if (num1 > 3) {
+          num1 = 0;
+        }
+        $(".product-container").fadeOut(200);
+        $(".product-container").fadeIn(200);
+        $(".product-container").css({
+          "background": "url(" + sources[num1] + ")",
+        });
+      });
+    });
+  </script>
+</head>
+
+<body>
+
+  <!-- Collections
+  Men
+  Women
+  About
+  Contact
+
+  Sneaker Company
+
+  Fall Limited Edition Sneakers
+
+  These low-profile sneakers are your perfect casual wear companion. Featuring a 
+  durable rubber outer sole, they’ll withstand everything the weather can offer.
+
+  $125.00
+  50%
+  $250.00
+
+  0
+  Add to cart -->
+  <main class="main">
+    <div class="nav-bar">
+      <div class="logo">
+        <div id="open">
+          <img src="images/icon-menu.svg" alt="">
+        </div>
+        <img src="images/logo.svg" alt="">
+      </div>
+      <div class="main-nav">
+        <div id="close">
+          <a href="javascript:void(0)"><img src="images/icon-close.svg" alt=""></a>
+        </div>
+        <a href="javascript:void(0)">Collections</a>
+        <a href="javascript:void(0)">Men</a>
+        <a href="javascript:void(0)">Women</a>
+        <a href="javascript:void(0)">About</a>
+        <a href="javascript:void(0)">Contact</a>
+      </div>
+      <div id="cover"></div>
+      <div class="cash-out">
+        <div class="icon-cart">
+          <div class="notification">0</div>
+          <img src="images/icon-cart.svg" class="cart-img" alt="" />
+        </div>
+        <div class="avatar">
+          <img src="images/image-avatar.png" alt="">
+        </div>
+        <div class="contain-cart">
+          <div class="cart">
+            <div class="cart-heading">
+              <h3>Cart</h3>
+            </div>
+            <div class="cart-contents">
+              <p class="default-txt">Your cart is empty</p>
+            </div>
+            <div class="cartAppended">
+              <div class="cart-flex">
+                <div class="itemImg">
+                  <img src="images/image-product-1-thumbnail.jpg" alt="">
+                </div>
+                <div class="productAbt">
+                  Fall Limited Edition Sneakers
+                  <div class="delete">
+                    <i class="fa fa-trash"></i>
+                  </div>
+                  <p>$125 × <span id="increase">1</span> <span id="result">$125</span></p>
+                </div>
+                <div class="btn-carted spe-btn-cart">Checkout</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="control-rest">
+      <div class="line-through"></div>
+      <div class="control-neglect">
+        <div class="lightbox product-preview">
+          <div class="close-box">
+            &times;
+          </div>
+          <div class="contain-main-box">
+            <div class="contain-img-box">
+              <div class="prev left-btn lightbox-btn">
+                <img src="images/icon-previous.svg" alt="">
+              </div>
+              <div class="lightboxImg">
+                <img src="images/image-product-1.jpg" id="img" alt="">
+              </div>
+              <div class="next right-btn lightbox-btn">
+                <img src="images/icon-next.svg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="thumbnails">
+            <div class="thumbnails-img">
+              <img src="images/image-product-1-thumbnail.jpg" class="thumb1" alt="">
+            </div>
+            <div class="thumbnails-img">
+              <img src="images/image-product-2-thumbnail.jpg" class="thumb2" alt="">
+            </div>
+            <div class="thumbnails-img">
+              <img src="images/image-product-3-thumbnail.jpg" class="thumb3" alt="">
+            </div>
+            <div class="thumbnails-img">
+              <img src="images/image-product-4-thumbnail.jpg" class="thumb4" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="product-main">
+          <div class="product-container">
+            <div class="next-prev">
+              <div class="next-prev">
+                <div class="prev left-btn spec-left-btn lightbox-btn">
+                  <img src="images/icon-previous.svg" alt="">
+                </div>
+                <div class="next right-btn spec-right-btn lightbox-btn">
+                  <img src="images/icon-next.svg" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="flex">
+              <div class="main-product-img">
+                <img src="images/image-product-1.jpg" alt="">
+              </div>
+              <div class="mini-product-img">
+                <div class="img-thumbnail spec-thumb">
+                  <img src="images/image-product-1-thumbnail.jpg" alt="">
+                  <div class="spec-img-cover"></div>
+                </div>
+                <div class="img-thumbnail">
+                  <img src="images/image-product-2-thumbnail.jpg" alt="">
+                </div>
+                <div class="img-thumbnail">
+                  <img src="images/image-product-3-thumbnail.jpg" alt="">
+                </div>
+                <div class="img-thumbnail">
+                  <img src="images/image-product-4-thumbnail.jpg" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-txt-container">
+            <div class="tiny-heading">
+              SNEAKER COMPANY
+            </div>
+            <div class="main-heading">
+              <h1>Fall Limited Edition Sneakers</h1>
+            </div>
+            <div class="sub-text">
+              <p>
+                These low-profile sneakers are your perfect
+                casual wear companion. Featuring a
+                durable rubber outer sole, they’ll withstand
+                everything the weather can offer.
+              </p>
+            </div>
+            <div class="pricing">
+              <div class="pricing-col">
+                <h1>$125.00</h1>
+                <p class="slash-price">$250.00</p>
+              </div>
+              <div class="discount">
+                50%
+              </div>
+            </div>
+            <div class="add-to-cart">
+              <div class="control">
+                <div class="decrement"><img src="images/icon-minus.svg" alt=""></div>
+                <div class="no-affected">1</div>
+                <div class="increment"><img src="images/icon-plus.svg" alt=""></div>
+              </div>
+              <div class="btn-cart">
+                <i class="fa fa-shopping-cart"></i>
+                Add to cart
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
