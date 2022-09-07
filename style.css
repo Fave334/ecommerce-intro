@@ -248,17 +248,30 @@ body {
     position: absolute;
     transform: translate(-50%, -50%);
 }
-.close-box {
-    top: 0%;
+.mainClose {
+    top: -300%;
     position: absolute;
     font-size: 40px;
     color: #fff;
     cursor: pointer;
-    background-color: var(--brickRed);
-    padding: 0.5rem 3rem;
+    background-color: #ff9365;
+    padding: 0.2rem 1.5rem 0.5rem 1.5rem;
+    border-radius: 50%;
+    transition: 0.5s ease-in-out;
+    transform: translate(-50%, 0);
 }
-.close-box:hover {
+.mainClose:hover {
     background-color: red;
+}
+.close-box {
+    padding: 0 0 100px 0;
+    position: absolute;
+    width: 100%;
+    top: 0%;
+    padding-left: 50%;
+}
+.close-box:hover .mainClose {
+    top: 20%;
 }
 .thumbnails-img{
     margin: 0 0 0 5%;
@@ -336,6 +349,9 @@ body {
 }
 .product-txt-container {
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .sub-text{
     font-size: 16px;
@@ -518,4 +534,4 @@ body {
     background: var(--orangeLink);
     display: none;
 }
-/* 08033443380 */
+/*Done with love by Favour Ejiofor and this is my website*/
